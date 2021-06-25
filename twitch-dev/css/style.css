@@ -1,0 +1,46 @@
+
+* {margin: 0; padding: 0;}
+
+body {}
+a {color: #000; text-decoration: none;}
+a:hover {text-decoration: underline;}
+
+#wrap {width: 1200px; margin: 0 auto;}
+#side {
+    height: 100%; box-sizing: border-box;
+    float: left; width: 200px; min-height: 100vh;
+    border-left: 5px solid; border-right: 5px solid; border-color: rgb(216, 216, 216);
+}
+#side .cont {
+    padding: 8px 10px; font-size: 20px; font-weight: bold; display: block;
+    cursor: pointer; border-bottom: 3px solid rgb(216, 216, 216);;
+}
+#side .cont.active , #side .cont.active:hover {
+    cursor: auto; background-color: #fff; font-size: 25px; text-decoration: none;
+    background-color: rgb(197, 197, 197);
+}
+
+#main {
+    height: 100%; box-sizing: border-box;
+    float: left; width: 1000px; min-height: 100vh;
+    border-right: 5px solid;  border-color: rgb(216, 216, 216);
+    padding: 20px; position: relative;
+}
+#main .origin {
+    font-size: 20px; float: right; position: absolute; top: 10px; right: 20px;
+    text-decoration: none; color: #000;
+}
+#main .origin:hover {font-weight: bold;}
+#main .title {
+    font-size: 35px; font-weight: bold; padding-bottom: 15px; padding-top: 20px;
+}
+#main .sub_title {
+    font-size: 23px; font-weight: 700; padding-bottom: 7px; padding-top: 30px;
+    border-bottom: 2px solid; border-color: rgb(216, 216, 216);
+}
+#main p {padding: 5px 3px;}
+
+#main table {border: 1px solid #000; margin: 20px 0;}
+#main table tbody tr td a {display: block; text-align: center; padding: 5px 10px;}
+#main table tbody tr td {border-right: 1px solid #000; border-top: 1px solid #000;}
+#main table tbody tr td:last-child {border-right: none;}
