@@ -1,14 +1,21 @@
 
 * {margin: 0; padding: 0;}
 
-body {}
+@font-face {
+    font-family: 'ELAND_Choice_M';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/ELAND_Choice_M.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {font-family: 'ELAND_Choice_M';}
 a {color: #000; text-decoration: none;}
 a:hover {text-decoration: underline;}
 
-#wrap {width: 1200px; margin: 0 auto;}
+#wrap {width: 1200px; margin: 0 auto; display: flex; min-height: 100vh;}
 #side {
-    height: 100%; box-sizing: border-box;
-    float: left; width: 200px; min-height: 100vh;
+    box-sizing: border-box;
+    float: left; width: 200px;
     border-left: 5px solid; border-right: 5px solid; border-color: rgb(216, 216, 216);
 }
 #side .cont {
@@ -21,8 +28,8 @@ a:hover {text-decoration: underline;}
 }
 
 #main {
-    height: 100%; box-sizing: border-box;
-    float: left; width: 1000px; min-height: 100vh;
+    box-sizing: border-box;
+    float: left; width: 1000px;
     border-right: 5px solid;  border-color: rgb(216, 216, 216);
     padding: 20px; position: relative;
 }
@@ -38,9 +45,11 @@ a:hover {text-decoration: underline;}
     font-size: 23px; font-weight: 700; padding-bottom: 7px; padding-top: 30px;
     border-bottom: 2px solid; border-color: rgb(216, 216, 216);
 }
-#main p {padding: 5px 3px;}
+#main p {padding: 12px 3px;}
 
 #main table {border: 1px solid #000; margin: 20px 0;}
 #main table tbody tr td a {display: block; text-align: center; padding: 5px 10px;}
 #main table tbody tr td {border-right: 1px solid #000; border-top: 1px solid #000;}
 #main table tbody tr td:last-child {border-right: none;}
+#main a {color: blue;}
+#main li {margin-left: 40px; padding: 5px 0;}
