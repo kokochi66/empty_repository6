@@ -25,13 +25,13 @@
             <ol>
                 <li> <a href="#registration">여러분들의 앱을 생성하세요.</a> 
                     그리고 클라이언트ID(client ID)와 클라이언트 시크릿(client secret)을 얻으세요</li>
-                <li> <a href="https://dev.twitch.tv/docs/authentication#getting-tokens">토큰을 얻으세요</a> 
+                <li> <a href="#get_token">토큰을 발급받으세요.</a> 
                     이를 위해서는 범위지정(scope)과 어플리케이션에 필요한 권한지정(permission)이 필요합니다.</li>
                 <li> <a href="https://dev.twitch.tv/docs/authentication#sending-user-access-and-app-access-tokens">여러분의 API 요청에 토큰을 보내세요.</a> 
                     이를 통해서 API 요청의 인증이 완료됩니다.</li>
             </ol>
             <p>GO와 Node.js의 샘플 코드가 존재합니다.</p>
-            <p><strong>경고 : </strong>여러분들의 토큰을 비밀번호와 같이 다뤄야합니다. 여러분들의 토큰을 공용 URL로 사용해서는 안되며, 웹페이지에 공개해서도 안됩니다.</p>
+            <p><strong>주의 : </strong>여러분들의 토큰을 비밀번호와 같이 다뤄야합니다. 여러분들의 토큰을 공용 URL로 사용해서는 안되며, 웹페이지에 공개해서도 안됩니다.</p>
             
 
             <div class="sub_title" id="Validating">요청에 대한 유효성 검사(Validating)</div>
@@ -44,12 +44,151 @@
             <div class="colorscripter-code" style="color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#fafafa;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #e5e5e5"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#666;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">curl&nbsp;-H&nbsp;"Authorization:&nbsp;OAuth&nbsp;&lt;access&nbsp;token&gt;"&nbsp;https://id.twitch.tv/oauth2/validate</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#e5e5e5;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
             <p>그리고, 다음은 응답에 대한 예제 입니다.</p>    
             <div class="colorscripter-code" style="color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#fafafa;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #e5e5e5"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#666;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div><div style="line-height:130%">7</div><div style="line-height:130%">8</div><div style="line-height:130%">9</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">{</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;"client_id":&nbsp;"wbmytr93xzw8zbg0p1izqyzzc5mbiz",</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;"login":&nbsp;"twitchdev",</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;"scopes":&nbsp;[</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;"channel:read:subscriptions"</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;],</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;"user_id":&nbsp;"141981764",</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;"expires_in":&nbsp;5520838</div><div style="padding:0 6px; white-space:pre; line-height:130%">}</div></div><div style="text-align:right;margin-top:-13px;margin-right:5px;font-size:9px;font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#e5e5e5;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+            
+            
             <div class="sub_title" id="registration">어플리케이션 생성(Registration)</div>
+            <p>트위치 API를 사용한 어플리케이션을 만들기 위해서, 먼저 여러분들의 어플리케이션을 <a href="https://dev.twitch.tv/console/apps/create">트위치 개발자 사이트에 등록</a>해야합니다. 등록시에, 인증 후에 리다이렉션 되는 URI를 지정합니다. 여러분들은 다른 환경에서 동일한 클라이언트를 사용하는 경우에, 여러개의 URI를 등록할 수 있습니다.</p>
+            <p>여러분들의 개발자 어플리케이션을 등록했다면, client ID를 발급 받았을 것입니다. 몇몇 인증의 경우에는, 마찬가지로 위의 사이트에서 발급받을 수 있는 client secret이 필요한 경우도 있습니다.</p>
+            <ul>
+                <li>Client ID의 경우에는 공용이며, 공유가 가능합니다.</li>
+                <li>Client secret은 어플리케이션의 비밀번호의 역할을 하며, 다른 사용자에게 노출되지 않도록 주의해야합니다.</li>
+            </ul>
+            <p>client secret은 기밀이 유지되어야 하므로, 트위치에서도 한번 페이지를 떠나면 이를 다시 확인할 수 없습니다. 그러므로, 여러분들은 이 암호를 별도의 장소에 기록해 두어야 합니다. 또한, 새로운 client secret을 발급받는 즉시, 기존의 client secret은 무효화 되어, 어플리케이션이 업데이트 될 때 까지 API 요청이 실패처리가 될 수 있습니다.</p>
+            <p><strong>주의 : </strong>Client ID는 각 어플리케이션 에 대해서 고유한 값을 가집니다. 그러므로 여러 어플리케이션에서 동일한 Client ID를 사용해서는 안됩니다. 또한, 어플리케이션은 의도한 API에 적절한 범위를 요청해야합니다. 이 가이드라인을 준수하지 않는다면, 트위치 API에 대한 어플리케이션의 엑세스가 정지될 수 있습니다.</p>
         
+        
+            <div class="sub_title" id="type_token">토큰의 타입(type)</div>
+            <p>트위치는 몇가지 토큰의 타입을 제공합니다.</p>
+            <table width="900px">
+                <thead>
+                    <tr>
+                        <th width="15%">토큰 타입</th>
+                        <th width="85%">설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ID 토큰(OIDC)</td>
+                        <td>
+                            <p>최종 사용자에게 지정된 권한에 대한 집합이다. OIDC 토큰을 사용하면, 여러분들은 특정한 권한을 가진 사용자의 세부정보를 얻을 수 있습니다. 이러한 세부정보는 ID 토큰의 권한 정보로 표시됩니다.</p>
+                            <p>우리의 엔드포인트는 <a href="https://id.twitch.tv/oauth2/.well-known/openid-configuration" style="display: inline-block;">https://id.twitch.tv/oauth2/.well-known/openid-configuration</a>에 있습니다. 이는 AWS Cognito와 같은 OIDC 표준 클라이언트 에서도 사용될 수 있습니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>사용자 엑세스 토큰</td>
+                        <td>
+                            <p>어플리케이션이 요청을 보내서 사용자를 인증하고, 접근을 할 수 있도록 합니다. 여러분의 어플리케이션으 트위치 로그인을 사용하거나, 컨텍스트에서 요청을 사용하는 경우에는 사용자 엑세스 토큰을 사용해야 합니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>앱 엑세스 토큰</td>
+                        <td>
+                            <p>여러분의 어플리케이션을 인증하고, 자원에 접근하도록 인증하는 역할을 합니다. 앱 엑세스 토큰은 사용자와 연결되어있지 않다면 사용할 수 없으며, 사용자 인증이 요구되는 엔드포인트를 사용할 수 없습니다.</p>
+                            <p>몇몇의 트위치 API 엔드포인트는 어플리케이션 인증을 요구합니다.(이것은 사용자 인증과는 다릅니다) 만약, 여러분들의 어플리케이션이 이러한 엔드포인트를 사용한다면, 여러분들은 앱 엑세스 토큰을 생성할 필요가 있습니다. 앱 엑세스 토큰은 클라이언트의 자격(credential)을 가져옵니다. 이를 통해서 여러분들은 특정한 보안 API 요청을 보낼 수 있습니다. 클라이언트 자격은 클라이언트 ID를 대신하여 자격 증명을 하는데에 사용될 수도 있습니다.</p>
+                            <p>앱 엑세스 토큰은 60일 동안 사용이 가능합니다. 그래서 여러분은 유효성 검사 요청을 보내서 여러분의 앱 엑세스 토큰이 유효한지를 먼저 확인해야합니다. 만약 여러분의 앱 엑세스 토큰의 유효기간이 지났다면 새로운 토큰을 발급받아야 합니다.</p>
+                            <p>앱 엑세스 토큰은 오직 서버 간 API 통신에서만 사용되며, 클라이언트 코드 상에서 노출되어서는 안됩니다. </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>사용자 엑세스 토큰과 앱 엑세스 토큰은 모두 bearer 타입의 토큰입니다. "Bearer"는 헤더 인증에서 등장합니다. <a href="#send_access_token">유저 엑세스와 앱 엑세스 토큰 보내기</a>를 참조하세요. </p>
+        
+        
+            <div class="sub_title" id="get_token">토큰 발급받기</div>
+            <p> 트위치의 인증 전용 도메인은 https://id.twitch.tv 입니다.</p>
+            <p><strong>참고 : </strong>URL이 https://api.twitch.tv/kraken 에서 https://id.twitch.tv 로 변경되었습니다. 구버전인 kraken 도메인도 여전히 트위치 API v.5의 기능이 제거될 때 까지 기능할 것입니다. 하지만 트위치 API v.5는 추천드리지 않습니다. </p>
+            <p>우리들은 다음 몇가지 인증 흐름(flow)를 제공합니다.</p>
+            <table width="900px">
+                <thead>
+                    <tr>
+                        <th width="20%">흐름 타입</th>
+                        <th width="80%">설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>암시적(Implicit) 흐름</td>
+                        <td>
+                            <p>여러분의 어플리케이션이 서버를 사용하지 않는, 클라이언트 사이드나 자바 스크립트, 혹은 모바일 어플리케이션일 때 사용됩니다. 이 방식은 서버나 API에 요청을 보낼 필요가 없습니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>인증 흐름</td>
+                        <td>
+                            <p>여러분의 어플리케이션이 서버를 사용하고, client secret의 보안을 지킬 수 있으며, 서버간의 요청을 처리할 수 있습니다.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>클라이언트 자격 흐름</td>
+                        <td>
+                            <p>앱 엑세스 토큰이 필요합니다.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>각 토큰을 얻는데 사용되는 절차는 토큰에 따라서 다릅니다. 그것은 다음과 같습니다.</p>
+            <table width="700px">
+                <thead>
+                    <tr>
+                        <th width="40%">절차</th>
+                        <th width="25%">사용자 엑세스 토큰</th>
+                        <th width="10%">ID 토큰</th>
+                        <th width="25%">앱 엑세스 토큰</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>OIDC 암시적 코드 흐름</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OAuth 암시적 코드 흐름</td>
+                        <td>✔</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OIDC 인증 코드 흐름</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OAuth 인증 코드 흐름</td>
+                        <td>✔</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>OAuth 클라이언트 자격 흐름</td>
+                        <td></td>
+                        <td></td>
+                        <td>✔</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>보안 목적에 의해서, 예제에서는 가짜 엑세스 토큰인, "0123456789abcdefhghijABCDEFGHIJ"가 사용됩니다.</p>
+
+
+            <div class="sub_title" id="send_access_token">사용자 엑세스와 앱 엑세스 토큰 보내기</div>
+            <p>API 인증 요청을 보낼 때, 엑세스 토큰을 헤더에 담아야 합니다. 헤더는 어떤 API를 사용하느냐에 따라 달라집니다.</p>
+            <p>트위치 API의 경우</p>
+            <div class="colorscripter-code" style="color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#fafafa;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #e5e5e5"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#666;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">curl&nbsp;-H&nbsp;"Authorization:&nbsp;Bearer&nbsp;&lt;access&nbsp;token&gt;"&nbsp;https://api.twitch.tv/helix/</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#e5e5e5;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+            <p>트위치 API v.5의 경우(비추천)</p>
+            <div class="colorscripter-code" style="color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#fafafa;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #e5e5e5"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#666;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">curl&nbsp;-H&nbsp;"Authorization:&nbsp;OAuth&nbsp;&lt;access&nbsp;token&gt;"&nbsp;https://api.twitch.tv/kraken/</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#e5e5e5;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+
+
+            <div class="sub_title" id="Revoking_token">엑세스 토큰 해지(Revoking)하기</div>
+            <p>엑세스 토큰을 해지하려면, 트위치 OAuth 토큰 취소 엔드포인트를 사용해야합니다. 해당 구현은 <a href="https://datatracker.ietf.org/doc/html/rfc7009#section-2.1">OAuth 표준</a>을 따릅니다.</p>
+            <p>여러분의 서버에서, 토큰을 해지하려면 다음 요청 형식을 따릅니다. 더 자세한 예제는 본 사이트를 참고하세요.</p>
+            <div class="colorscripter-code" style="color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#fafafa;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #e5e5e5"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#666;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">POST&nbsp;https://id.twitch.tv/oauth2/revoke</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;?client_id=&lt;your&nbsp;client&nbsp;ID&gt;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&amp;token=&lt;your&nbsp;OAuth&nbsp;token&gt;</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#e5e5e5;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+            <p>이 요청은 앱 엑세스 토큰도 마찬가지로 동작합니다.</p>
+            <p>요청이 성공하면 200 OK와 함께 바디에는 아무런 값이 전달되지 않습니다. 요청이 취소되었다면, 400 Bad Request와 함께 "Invalid token"메세지가 전달 될 것입니다.</p>
+            <p>잘못된 요청으로 인해서 400 Bad Request가 온 경우, 요청 수정 방법에 대한 정보가 기록되며, 일반적으로 client_id에 대한 수정이 요청됩니다. </p>
+
         </div>
-
     </div>
-
-    
 </body>
 </html>
