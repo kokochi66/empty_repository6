@@ -8,68 +8,112 @@
     font-style: normal;
 }
 
+
+
 body {font-family: 'ELAND_Choice_M';}
-a {color: #000; text-decoration: none;}
-a:hover {text-decoration: underline;}
+.container .row .side {
+    box-sizing: border-box; border-left: 5px solid; border-right: 5px solid; border-color: rgb(216, 216, 216);
+    padding: 0; background-color: #fff; padding: 0; z-index: 1000;
+    width: 200px; position: fixed; top: 0; left: 0;
+    display: block; height: 100%; transition: left .3s ease;
+}
+.side .cont {
+    padding: 8px 10px; font-size: 15px; font-weight: bold; display: block;
+    border-bottom: 3px solid rgb(216, 216, 216); width: 100%; 
+}
+.side .cont.active {
+    font-size: 19px; background-color: rgb(39, 39, 39); color: #fff;
+}
+.side .cont.active a {color: rgb(195, 195, 195);}
 
-#wrap {width: 1200px; margin: 0 auto; display: flex; min-height: 100vh;}
-#side {
-    box-sizing: border-box;
-    float: left; width: 200px;
-    border-left: 5px solid; border-right: 5px solid; border-color: rgb(216, 216, 216);
+.side .cont .top {font-size: 20px;}
+.side .cont .list {
+    padding-left: 15px; position: relative;
 }
-#side .cont {
-    padding: 8px 10px; font-size: 20px; font-weight: bold; display: block;
-    cursor: pointer; border-bottom: 3px solid rgb(216, 216, 216);;
+.side .cont .list.active {
+    background-color: rgb(39, 39, 39); color: #fff;
 }
-#side .cont.active , #side .cont.active:hover {
-    cursor: auto; background-color: #fff; font-size: 25px; text-decoration: none;
-    background-color: rgb(197, 197, 197);
+.side .cont .list::after {
+    content: ''; width: 5px; height: 5px; background-color: #000;
+    position: absolute; top: 50%; left: 5px; transform: translateY(-50%);
+    border-radius: 50%;
 }
-#side .cont .tob {padding-bottom: 5px;}
-#side .cont .list {
-    font-size: 13px; font-weight: 100; display: block; margin-left: 10px; padding: 5px 0;
-    cursor: pointer; position: relative;
-}
-#side .cont .list.active {
-    cursor: auto; text-decoration: none; font-weight: bold;
-}
-#side .cont .list::after {
-    content: ''; width: 4px; height: 4px; position: absolute; transform: translateY(-50%); top: 50%; left: -10px; background: #000;
+.side .cont .list.active::after {
+    background-color: #fff;
 }
 
-#main {
-    box-sizing: border-box;
-    float: left; width: 1000px;
-    border-right: 5px solid;  border-color: rgb(216, 216, 216);
-    padding: 20px; position: relative;
-}
-#main .origin {
-    font-size: 20px; float: right; position: absolute; top: 10px; right: 20px;
-    text-decoration: none; color: #000;
-}
-#main .origin:hover {font-weight: bold;}
-#main .title {
-    font-size: 35px; font-weight: bold; padding-bottom: 15px; padding-top: 20px;
-}
-#main .sub_title {
-    font-size: 23px; font-weight: 700; padding-bottom: 7px; padding-top: 30px;
-    border-bottom: 2px solid; border-color: rgb(216, 216, 216);
-}
-#main p {padding: 12px 3px;}
 
-#main table {border: 1px solid #000; margin: 20px 0;}
-#main table thead tr th {border-right: 1px solid #000;}
-#main table thead tr th:last-child {border-right: none;}
-#main table tbody tr td a {display: block; padding: 5px 10px;}
-#main table tbody tr td p a {display: inline-block; padding: 0;}
-#main table tbody tr td {border-right: 1px solid #000; border-top: 1px solid #000;}
-#main table tbody tr td:last-child {border-right: none;}
-#main a {color: blue;}
-#main li {margin-left: 40px; padding: 5px 0;}
 
-#main h1 {padding: 40px 0;}
-#main h2 {padding: 32px 0;}
-#main h3 {padding: 25px 0;}
-#main h4 {padding: 17px 0;}
-#main h5 {padding: 10px 0;}
+.container .row .main {
+    position: relative;
+}
+.container .row .main .origin {
+    position: absolute; top: 10px; right: 20px;
+}
+
+.container .row .main h1 {
+    padding: 2rem 0; border-bottom: 2px solid #000;
+}
+.container .row .main h2 {
+    padding: 1.5rem 0; border-bottom: 1px solid #000;
+}
+.container .row .main h3 {
+    padding: 1rem 0;
+}
+.container .row .main a {
+    color: blue; text-decoration: none;
+}
+.container .row .main a:hover {
+    text-decoration: underline;
+}
+
+.container .row .main table {font-size: 18px; border: 1px solid #000;}
+.container .row .main table thead th {padding: 6px; border-bottom: 1px solid #000;}
+.container .row .main table tbody tr {
+    border-bottom: 1px solid #000;
+}
+.container .row .main table tbody tr:last-child {
+    border-bottom: none;
+}
+.container .row .main table tbody td {
+    padding: 6px;  border-right: 1px solid #000;
+}
+.container .row .main table tbody td:last-child {border-right: none;}
+
+@media (min-width: 0px) {
+    .container .row .side {left: -200px;}
+    .container .row .side.active {left: 0px;}
+    .container .row .main {
+        margin-top: 50px;
+    }
+    .container .row .menu {
+        width: 100%; height: 50px; background-color: rgba(66, 66, 66, 0.424);
+        position: fixed; top: 0; left: 0; z-index: 1000;
+    }
+    .container .row .menu .side-bar {
+        display: inline-block; cursor: pointer;
+        position: absolute; top: 50%; right: 20px; transform: translateY(-50%);
+    }
+    .container .row .menu .side-bar .bar {
+        width: 30px; background-color: #000; height: 5px;
+        margin-bottom: 6px; border-radius: 20px;
+        transition: transform .3s, opacity .1s;
+    }
+    .container .row .menu .side-bar .bar:last-child {margin-bottom: 0;}
+    .container .row .menu .side-bar.active .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    } 
+    .container .row .menu .side-bar.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .container .row .menu .side-bar.active .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+}
+@media (min-width: 1200px) {
+    .container .row .side {left: 0px;}
+    .container .row .menu {display: none;}
+    .container .row .main {
+        margin-top: 0px;
+    }
+}
