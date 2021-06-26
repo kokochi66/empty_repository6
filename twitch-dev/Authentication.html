@@ -89,7 +89,7 @@
                     
                         <h2 id="type_token">토큰의 타입(type)</h2>
                         <p>트위치는 몇가지 토큰의 타입을 제공합니다.</p>
-                        <table width="90%">
+                        <table width="95%">
                             <thead>
                                 <tr>
                                     <th width="15%">토큰 타입</th>
@@ -101,7 +101,7 @@
                                     <td>ID 토큰(OIDC)</td>
                                     <td>
                                         <p>최종 사용자에게 지정된 권한에 대한 집합이다. OIDC 토큰을 사용하면, 여러분들은 특정한 권한을 가진 사용자의 세부정보를 얻을 수 있습니다. 이러한 세부정보는 ID 토큰의 권한 정보로 표시됩니다.</p>
-                                        <p>우리의 엔드포인트는 <a href="https://id.twitch.tv/oauth2/.well-known/openid-configuration" style="display: inline-block;">https://id.twitch.tv/oauth2/.well-known/openid-configuration</a>에 있습니다. 이는 AWS Cognito와 같은 OIDC 표준 클라이언트 에서도 사용될 수 있습니다.</p>
+                                        <p>우리의 엔드포인트는 <a href="https://id.twitch.tv/oauth2/.well-known/openid-configuration">https://id.twitch.tv/oauth2/.well-known/openid-configuration</a>에 있습니다. 이는 AWS Cognito와 같은 OIDC 표준 클라이언트 에서도 사용될 수 있습니다.</p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -128,7 +128,7 @@
                         <p> 트위치의 인증 전용 도메인은 https://id.twitch.tv 입니다.</p>
                         <p><strong>참고 : </strong>URL이 https://api.twitch.tv/kraken 에서 https://id.twitch.tv 로 변경되었습니다. 구버전인 kraken 도메인도 여전히 트위치 API v.5의 기능이 제거될 때 까지 기능할 것입니다. 하지만 트위치 API v.5는 추천드리지 않습니다. </p>
                         <p>우리들은 다음 몇가지 인증 흐름(flow)를 제공합니다.</p>
-                        <table width="90%">
+                        <table width="95%">
                             <thead>
                                 <tr>
                                     <th width="20%">흐름 타입</th>
@@ -157,7 +157,7 @@
                             </tbody>
                         </table>
                         <p>각 토큰을 얻는데 사용되는 절차는 토큰에 따라서 다릅니다. 그것은 다음과 같습니다.</p>
-                        <table width="70%">
+                        <table width="95%">
                             <thead>
                                 <tr>
                                     <th width="40%">절차</th>
@@ -231,7 +231,7 @@
                         <p>갱신을 위하여, 다음 요청을 사용하세요.</p>
                         <div class="colorscripter-code" style="color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#fafafa;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #e5e5e5"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#666;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div><div style="line-height:130%">2</div><div style="line-height:130%">3</div><div style="line-height:130%">4</div><div style="line-height:130%">5</div><div style="line-height:130%">6</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">POST&nbsp;https://id.twitch.tv/oauth2/token</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;--data-urlencode</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;?grant_type=refresh_token</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&amp;refresh_token=&lt;your&nbsp;refresh&nbsp;token&gt;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&amp;client_id=&lt;your&nbsp;client&nbsp;ID&gt;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&amp;client_secret=&lt;your&nbsp;client&nbsp;secret&gt;</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#e5e5e5;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
                         <p>추가적인 파라미터와, 옵션으로 사용되는 파라미터는 다음과 같습니다.</p>
-                        <table width="90%">
+                        <table width="95%">
                             <thead>
                                 <tr>
                                     <th width="20%">요구 파라미터</th>
@@ -271,7 +271,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <table width="90%">
+                        <table width="95%">
                             <thead>
                                 <tr>
                                     <th width="20%">옵션 파라미터</th>
@@ -314,7 +314,7 @@
                         <p>앱 엑세스 토큰을 요청할 때는 범위가 필요하지 않습니다.</p>
                         <h3>트위치 API</h3>
                         <p>아래의 표는 트위치 API에서의 사용가능한 포괄적인 범위 리스트를 나타내고 있습니다. 이러한 범위가 필요하지 않은 더 포괄적인 트위치 API의 엔드포인트를 버보고싶다면 <a href="https://dev.twitch.tv/docs/api/reference">트위치 API 레퍼런스</a>를 참조하세요.</p>
-                        <table width="90%">
+                        <table width="95%">
                             <thead>
                                 <tr>
                                     <th width="20%">범위 이름</th>
@@ -590,7 +590,7 @@
             
                         <h3>트위치 API v5</h3>
                         <p>트위치 API v5가 지원이 중단되면서, 트위치 API의 범위로 호환(migration)될 수 있도록 매핑되었습니다. 여러분들은 이 매핑에 대한 정보를 <a href="https://dev.twitch.tv/docs/api/migration">트위치 API 호환 가이드</a> 엔드포인트에서 확인할 수 있습니다.</p>
-                        <table width="90%">
+                        <table width="95%">
                             <thead>
                                 <tr>
                                     <th width="30%">범위 이름</th>
@@ -633,7 +633,7 @@
                             </tbody>
                         </table>
                         <h3>채팅 및 게시-구독(PubSub)</h3>
-                        <table width="90%">
+                        <table width="95%">
                             <thead>
                                 <tr>
                                     <th width="30%">범위 이름</th>
