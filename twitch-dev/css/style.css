@@ -15,7 +15,7 @@ body {font-family: 'ELAND_Choice_M';}
     box-sizing: border-box; border-left: 5px solid; border-right: 5px solid; border-color: rgb(216, 216, 216);
     padding: 0; background-color: #fff; padding: 0; z-index: 1000;
     width: 200px; position: fixed; top: 0; left: 0;
-    display: block; height: 100%; transition: left .3s ease;
+    display: block; height: 100%; transition: left .3s ease; overflow: auto;
 }
 .side .cont {
     padding: 8px 10px; font-size: 15px; font-weight: bold; display: block;
@@ -24,15 +24,16 @@ body {font-family: 'ELAND_Choice_M';}
 .side .cont.active {
     font-size: 19px; background-color: rgb(39, 39, 39); color: #fff;
 }
-.side .cont.active a {color: rgb(195, 195, 195);}
+.side .cont.active a {color: rgb(195, 195, 195); cursor: auto;}
 
 .side .cont .top {font-size: 20px;}
 .side .cont .list {
-    padding-left: 15px; position: relative;
+    padding-left: 15px; position: relative; padding-top: 5px;   padding-bottom: 5px;
 }
 .side .cont .list.active {
     background-color: rgb(39, 39, 39); color: #fff;
 }
+.side .cont .list.active a {cursor: auto; color: #fff;}
 .side .cont .list::after {
     content: ''; width: 5px; height: 5px; background-color: #000;
     position: absolute; top: 50%; left: 5px; transform: translateY(-50%);
@@ -51,7 +52,7 @@ body {font-family: 'ELAND_Choice_M';}
     word-break:break-all;
 }
 .container .row .main .origin {
-    position: absolute; top: 10px; right: 20px;
+    float: right; font-size: 15px;
 }
 
 .container .row .main h1 {
