@@ -110,7 +110,7 @@
                                     <td>claims</td>
                                     <td>string</td>
                                     <td>
-                                        <p><a href="https://dev.twitch.tv/docs/authentication/getting-tokens-oidc#userinfo-endpoint">UserInfo</a> 엔드포인트의 응답 객체나 반환받은 ID 토큰에 대해 지정된 <a href="https://dev.twitch.tv/docs/authentication/getting-tokens-oidc#claims">클레임(claims)</a>을 문자열로 변환한 JSON 객체입니다.</p>
+                                        <p><a href="#Userinfo_endpoint">UserInfo</a> 엔드포인트의 응답 객체나 반환받은 ID 토큰에 대해 지정된 <a href="#Claims">클레임(claims)</a>을 문자열로 변환한 JSON 객체입니다.</p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -182,7 +182,7 @@
                                     <td>response_type</td>
                                     <td>string</td>
                                     <td>
-                                        <p>두가지 값이 존재합니다. 하나는 token id_token으로, 엑세스 토큰과 ID 토큰을 반환합니다. 사용자에게는 오직 첫번쨰 요청에 대한 인증 확인 메세지만 표시됩니다. 이 방식은 token+id_token 이나 token%20id_token 형태의 URL로 인코딩 되어야 합니다. 다른 하나는 id_token 으로, 오직 ID 토큰만이 반환됩니다. 예를 들어, 유효한 엑세스 토큰을 가진 클라이언트가 인증된 사용자에 대한 추가 정보만이 필요한 경우에, 이 옵션을 선택할 수 있습니다.</p>
+                                        <p>이 값은 code 가 들어가야 합니다. 이 절차는 뒷부분에서 사용되는 인증 코드가 반환 되도록 하는 역할을 합니다. 사용자는 요청에 대해 승인을 확인하라는 메세지를 받게 됩니다.</p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -207,7 +207,7 @@
                                     <td>claims</td>
                                     <td>string</td>
                                     <td>
-                                        <p><a href="https://dev.twitch.tv/docs/authentication/getting-tokens-oidc#userinfo-endpoint">UserInfo</a> 엔드포인트의 응답 객체나 반환받은 ID 토큰에 대해 지정된 <a href="https://dev.twitch.tv/docs/authentication/getting-tokens-oidc#claims">클레임(claims)</a>을 문자열로 변환한 JSON 객체입니다.</p>
+                                        <p><a href="#Userinfo_endpoint">UserInfo</a> 엔드포인트의 응답 객체나 반환받은 ID 토큰에 대해 지정된 <a href="#Claims">클레임(claims)</a>을 문자열로 변환한 JSON 객체입니다.</p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -254,7 +254,7 @@
                         <p>우리의 ID 토큰의 값을 식별하기 위해서, 우리는 공용 JSON Web Ky(JWK)를 <a href="https://id.twitch.tv/oauth2/keys">이곳</a>에서 지원합니다. JWK를 어떻게 사용하는지에 대한 자세한 사항은 <a href="https://connect2id.com/blog/how-to-validate-an-openid-connect-id-token">Open ID Connect ID 토큰 식별하기</a>에서 확인할 수 있습니다.</p>
 
 
-                        <h2>클레임(Claims)</h2>
+                        <h2 id="Claims">클레임(Claims)</h2>
                         <p>클레임은 여러분의 어플리케이션에서 여러분이 얻길 원하는 사용자 인증과 관련된 데이터를 설명합니다. 여러분의 OIDC 요청의 claims 파라미터를 통해서 여러분들은 클레임을 포함 할 것인지, 어느정도 포함할 것인지를 설정할 수 있습니다. </p>
                         <p>클레임은 인증 요청에서 claims 파라미터를 전달함으로써, 요청할 수 있습니다. 이렇게 요청된 클레임은 ID 토큰이나 UserInfo 엔드포인트를 통해서 검색할 수 있습니다. 각 클레임 값을 반환 받으려면, 요청에서 claims 파라미터의 포맷을 어떻게 하느냐에 따라 결정할 수 있습니다.</p>
                         <p>claims 파라미터는 id_token과 userinfo 필드를 가진 JSON 객체 입니다. 여러분은 이러한 필드 값을 설정할 수 있으며, 필드값의 필수여부나, 고유성 여부에 대한 요구사항은 존재하지 않습니다. 예를들어서, 사용자의 이메일과 이메일 인증 상태를 ID 토큰에 포함하고, Userinfo 엔드포인트를 이용한 프로필 이미지를 받기 위해서, claims 파라미터는 다음과 같이 설정합니다.</p>
@@ -331,7 +331,7 @@
                         </table>
 
 
-                        <h2>UserInfo 엔드포인트</h2>
+                        <h2 id="Userinfo_endpoint">UserInfo 엔드포인트</h2>
                         <p>UserInfo 엔드포인트는 ID 토큰 외부의 권한 요청에서 원래 제공되어있던 클레임을 가져오는 역할을 합니다. 이 엔드포인트는 권한을 부여하는 사용자을 대신해서, OAuth 토큰을 받은 경우에 사용이 가능합니다. 여기서, 여러분의 인증 요청이 id_token 응답 타입만을 지정한다면, 이 엔드포인트를 호출 할 OAuth 토큰이 없게 될 것입니다.</p>
                         <div class="colorscripter-code" style="color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#fafafa;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px;border-right:2px solid #e5e5e5"><div style="margin:0;padding:0;word-break:normal;text-align:right;color:#666;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="line-height:130%">1</div></div></td><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#010101;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">GET&nbsp;'https://id.twitch.tv/oauth2/userinfo'&nbsp;-H&nbsp;"Authorization:&nbsp;Bearer&nbsp;&lt;OAuth&nbsp;token&gt;"</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#e5e5e5;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
                         <p>응답 객체는 JSON form으로 클레임을 요청합니다.</p>
